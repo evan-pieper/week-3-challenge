@@ -19,6 +19,8 @@ function generatePassword() {
   var charIndexCopy = 0;
   var upperChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   var lowerChar = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var numChar = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  var specialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '/', '?', '|', '~', '`', "'", '"', '\\'];
 
 
 
@@ -36,34 +38,45 @@ function generatePassword() {
       charIndex = i;
     }
     charIndexCopy = charIndex;
+    console.log(characterSet);
   }
 
-  /*
   if(confirm("do you want lowercase letter?")== true){
-    for(i=0; i<lowerChar.length; i++){
-      characterSet[i+charIndex] = lowerChar[i]; 
+    for(i= charIndex; i< charIndexCopy + lowerChar.length; i++){
+      characterSet[i] = lowerChar[i-charIndexCopy]; 
+
+      charIndex = i;
     }
+    charIndexCopy = charIndex;
+    console.log(characterSet);
   }
 
   if(confirm("do you want numerical characters?")== true){
+    for(i= charIndex; i< charIndexCopy + numChar.length; i++){
+      characterSet[i] = numChar[i-charIndexCopy]; 
 
+      charIndex = i;
+    }
+    charIndexCopy = charIndex;
+    console.log(characterSet);
   }
 
   if(confirm("do you want special characters?")== true){
+    for(i= charIndex; i< charIndexCopy + specialChar.length; i++){
+      characterSet[i] = specialChar[i-charIndexCopy]; 
 
+      charIndex = i;
+    }
+    charIndexCopy = charIndex;
+    console.log(characterSet);
   }
-*/
-
 
   for(i=0;i<passLength;i++){
-    passArray[i] = characterSet[Math.floor(Math.random()*passLength)];
+    passArray[i] = characterSet[Math.floor(Math.random()*characterSet.length)];
     passString = passString + passArray[i];
   }
 
-  /*
-  password.innerHTML = passArray;
-  passwordBox.appendChild(password);
-  */
+
   return passString;
 }
 
