@@ -10,5 +10,14 @@ function writePassword() {
 
 }
 
+function generatePassword() {
+  var passwordBox = document.getElementById("password");
+  var password = document.createElement("p");
+  var passLength = 0;
+  var characterSet = 0;
+  passwordBox.appendChild(password);
+  return password;
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
